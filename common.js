@@ -268,7 +268,7 @@ function getStream(type) {
 //TRIAL STUFF***************************************************************************************************
 
 
-//function stopCamFunction() {  //button click "Stop"
+function stopCamFunction() {  //button click "Stop"
 	
 //alert("Hello! I am an alert box!!");
 //var localStream;
