@@ -268,18 +268,36 @@ function getStream(type) {
 //TRIAL STUFF***************************************************************************************************
 
 
-function stopCamFunction() {  //button click "Stop"
-
+//function stopCamFunction() {  //button click "Stop"
+	
 //alert("Hello! I am an alert box!!");
+//var localStream;
 
-var localStream;
+//localStream.getTracks().forEach(function(track) { track.stop() }) //Stops the camera stream
 
+	
+var MediaStream = window.MediaStream;
 
-localStream.getTracks().forEach(function(track) { track.stop() }) //Stops the camera stream
-
-
-
+if (typeof MediaStream === 'undefined' && typeof webkitMediaStream !== 'undefined') {
+    MediaStream = webkitMediaStream;
 }
+
+/*global MediaStream:true */
+if (typeof MediaStream !== 'undefined' && !('stop' in MediaStream.prototype)) {
+    MediaStream.prototype.stop = function() {
+        this.getAudioTracks().forEach(function(track) {
+            track.stop();
+        });
+
+        this.getVideoTracks().forEach(function(track) {
+            track.stop();
+        });
+    };
+}
+	
+
+	
+}  //end function
 
 
 function myFunction() {  //button click "Start"
