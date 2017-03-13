@@ -1,13 +1,149 @@
 
-
-            
-
+         
+ 
+ 
+ 
+ 
  //Button Animation Stuff
  
  $(document).ready(function() {  
+           
+            
+            document.getElementById('scanBtn').style.pointerEvents = 'none'; //STOP the press of scan while already on scan
+
+            
+                     
+            
+            //STUFF TO SHOW RIGHT TIMETABLE
+            
+            //HAYDEN COE
+            
+            if (window.location.href=="http://sds.computerscience.online/?firstname=309219")  
+            {
+	        
+	     //Part to unhide the right timetable HNC2Timetable
+                var item = document.getElementById('HNC2Timetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+                //Hides the empty time table holder
+                var item = document.getElementById('emptyTimetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
             
             
-    $("#btn2").click(function(){
+            
+            }//end of if statement 
+        
+       
+            //KIERAN BROWN
+           
+           if (window.location.href=="http://sds.computerscience.online/?firstname=271592")  
+            {
+	        
+	     //Part to unhide the right timetable HNC2Timetable
+                var item = document.getElementById('HND2Timetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+                //Hides the empty time table holder
+                var item = document.getElementById('emptyTimetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+            
+            
+            }//end of if statement 
+
+
+
+           //SAM PRICE
+           
+           if (window.location.href=="http://sds.computerscience.online/?firstname=308401")  
+            {
+	        
+	     //Part to unhide the right timetable HNC2Timetable
+                var item = document.getElementById('HND2Timetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+                //Hides the empty time table holder
+                var item = document.getElementById('emptyTimetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+            
+            
+            }//end of if statement 
+
+
+
+          
+           //STEPHEN TREVOR
+           
+           if (window.location.href=="http://sds.computerscience.online/?firstname=312825")  
+            {
+	        
+	     //Part to unhide the right timetable HNC2Timetable
+                var item = document.getElementById('HND2Timetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+                //Hides the empty time table holder
+                var item = document.getElementById('emptyTimetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+            
+            
+            }//end of if statement 
+
+
+
+           //PATRICK SCOTT
+           
+           if (window.location.href=="http://sds.computerscience.online/?firstname=273051")  
+            {
+	        
+	     //Part to unhide the right timetable HNC2Timetable
+                var item = document.getElementById('HND2Timetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+                //Hides the empty time table holder
+                var item = document.getElementById('emptyTimetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+            
+            
+            }//end of if statement 
+
+
+           
+            
+            
+    $("#btn2").click(function(){//type button
         
      
         $("#inner").slideUp(500);
@@ -15,11 +151,15 @@
                
         $("#panel").delay(500).slideDown(500);
    
-    
-    });
+   
+   
+               
+
+         
+             });
 
 
-     $(".btn").click(function(){
+     $(".btn").click(function(){//scan button
         
         $("#panel").slideUp(500);
         $("#inner").delay(500).slideDown(500);
@@ -27,7 +167,7 @@
         
         //$("#cam").delay(1000).show("slow");
     
-    
+         
     });
 
             
@@ -37,6 +177,8 @@
             //Type button
             $("#btn2").click(function () {
                
+             
+                          
              
              //$(".selected").removeClass("selected");
              $(this).addClass("active");
@@ -84,8 +226,9 @@
                 });
          
          
+               document.getElementById('btn2').style.pointerEvents = 'none'; //STOP the press of type btn while already on type
+               document.getElementById('scanBtn').style.pointerEvents = 'auto'; //ENABLE the press of scan while on type
 
-         
          
            });
          
@@ -143,9 +286,15 @@
                 });
          
          
+               document.getElementById('btn2').style.pointerEvents = 'auto'; //ENABLE the press of type while on scan
+               document.getElementById('scanBtn').style.pointerEvents = 'none'; //STOP the press of scan while already on scan
+
+         
+         
            });
          
          
+                  
          });
 
 
@@ -211,7 +360,6 @@ $(document).ready(function() {
       .end()
       .appendTo('#slideshow');
   }, 4000);
-
 */
 
 
@@ -258,11 +406,7 @@ function getStream(type) {
         
                 
 
-// Function that adds product to localstorage and navigates to cart page
-//function addCart(id, title, price) {
-  //localStorage.setItem(id, JSON.stringify({title: title, price: price}))
-  //location.href = 'http://www.haydencoe.co.uk/cart.html';
-//}
+
 
 
 //TRIAL STUFF***************************************************************************************************
@@ -270,39 +414,20 @@ function getStream(type) {
 
 function stopCamFunction() {  //button click "Stop"
 	
-//alert("Hello! I am an alert box!!");
-//var localStream;
 
-//localStream.getTracks().forEach(function(track) { track.stop() }) //Stops the camera stream
+location.reload();
 
-	
-var MediaStream = window.MediaStream;
 
-if (typeof MediaStream === 'undefined' && typeof webkitMediaStream !== 'undefined') {
-    MediaStream = webkitMediaStream;
-}
-
-/*global MediaStream:true */
-if (typeof MediaStream !== 'undefined' && !('stop' in MediaStream.prototype)) {
-    MediaStream.prototype.stop = function() {
-        this.getAudioTracks().forEach(function(track) {
-            track.stop();
-        });
-
-        this.getVideoTracks().forEach(function(track) {
-            track.stop();
-        });
-    };
-}
-	
+document.getElementById('btn2').style.pointerEvents = 'auto'; //ENABLE the press of type when web cam is deactivated
 
 	
-}  //end function
+}  //end stop function
 
 
 function myFunction() {  //button click "Start"
   
   
+       
       
     
     //    alert("Hello! I am an alert box!!");
@@ -328,157 +453,33 @@ function myFunction() {  //button click "Start"
         worker.onmessage = function(event) {
             if (event.data.length == 0) return;
             var d = event.data[0];
-            var entry = document.createElement('li');
-            entry.appendChild(document.createTextNode(d[2] + ' (' + d[0] + ')'));
-            list.appendChild(entry);
+            
+           // var entry = document.createElement('li');
+            //entry.appendChild(document.createTextNode(d[2] + ' (' + d[0] + ')'));
+            //list.appendChild(entry);
+            
             sound.play(); //Plays 'beep' noise
         
+             // Submit form with name function.
+              
+              
+              var str = event.data[0]; 
+              var res = str.slice(-1);
+              
+              document.getElementById('fname').value = res;    
+              
+              document.getElementById('myForm').submit();
+              
+              
 
             localStream.getTracks().forEach(function(track) { track.stop() }) //Stops the camera stream
             
-           
-            
-            // Statement to work who has been scanned
-            if (event.data == "CODE-39,,309219")  
-            {
-	        
-	           var name = "Hayden Coe";
-               var entrys = document.createElement('li');
-               entrys.appendChild(document.createTextNode(name));
-               lists.appendChild(entrys);
-
-                //Part to unhide the right timetable HNC2Timetable
-                var item = document.getElementById('HNC2Timetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-                //Hides the empty time table holder
-                var item = document.getElementById('emptyTimetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-            
-            
-            }//end of if statement 
+       
+                       
            
            
            
-           // Statement to work who has been scanned
-            if (event.data == "CODE-39,,271592")  
-            {
-	        
-	           var name = "Kieran Brown";
-               var entrys = document.createElement('li');
-               entrys.appendChild(document.createTextNode(name));
-               lists.appendChild(entrys);
-
-                //Part to unhide the right timetable HNC2Timetable
-                var item = document.getElementById('HND2Timetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-                var item = document.getElementById('emptyTimetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-            
-            }//end of if statement 
-
-           
-             // Statement to work who has been scanned
-            if (event.data == "CODE-39,,308401")  
-            {
-	        
-	           var name = "Sam Price";
-               var entrys = document.createElement('li');
-               entrys.appendChild(document.createTextNode(name));
-               lists.appendChild(entrys);
-
-                //Part to unhide the right timetable HNC2Timetable
-                var item = document.getElementById('HND2Timetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-                var item = document.getElementById('emptyTimetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-            
-            }//end of if statement 
-
-              // Statement to work who has been scanned
-            if (event.data == "CODE-39,,312825")  
-            {
-	        
-	           var name = "Steven Trevor ";
-               var entrys = document.createElement('li');
-               entrys.appendChild(document.createTextNode(name));
-               lists.appendChild(entrys);
-
-                //Part to unhide the right timetable HNC2Timetable
-                var item = document.getElementById('HND2Timetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-                var item = document.getElementById('emptyTimetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-            
-            }//end of if statement 
-
-           
-           
-           // Statement to work out who has been scanned 
-            if (event.data == "CODE-39,,273051")  
-            {
-	        
-	            var name = "Patrick Scott";
-                var entrys = document.createElement('li');
-                entrys.appendChild(document.createTextNode(name));
-                lists.appendChild(entrys);
-
-                //Part to unhide the right timetable HND2Timetable      
-                var item = document.getElementById('HND2Timetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-           
-                var item = document.getElementById('emptyTimetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-
-	            
-            }//end of if statement 
-
-           
-          
-            }; //End of "Worker" 
-            
-            
-
-           // window.open("https://www.haydencoe.co.uk/popUp.html"); 
-            
-           
+           }; //End of "Worker" 
 
         function snapshot() {
             if (localMediaStream === null) return;
@@ -534,7 +535,7 @@ function myFunction() {  //button click "Start"
         }
         
         
-        
+         document.getElementById('btn2').style.pointerEvents = 'none'; //STOP the press of type while web cam is active
 
         } //end of myFunction
         
@@ -551,10 +552,3 @@ function myFunction() {  //button click "Start"
          
          
          }
-         
-         
-         
-         
-         
-         
-         
