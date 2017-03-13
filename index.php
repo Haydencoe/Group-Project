@@ -120,7 +120,7 @@ mysqli_close($conn);
   ?>
 
         
-             </div><!-- End of Student Dtails -->
+             </div><!-- End of Student Details -->
                
                
                
@@ -238,12 +238,100 @@ mysqli_close($conn);
        </div>    <!-- end of main div-->
             
             
+            <div id="studentDetailsHolder"> 
+            
+            <div id="secondStudentDetails"> 
+            
+            
+              <p> Student Details:</p>
+                
+                         
+                <!--<p id="">Student Name: </p>-->
+                <!--<ul id="decodeders"> </ul>-->
+
+                <!--<p id="">Student Number: </p>-->
+                <ul id="decoded"></ul>
+               
+               <?php
+$servername = "db668576206.db.1and1.com";
+$username = "dbo668576206";
+$password = "hayden301";
+$dbname = "db668576206";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password);
+// Check connection
+
+$db_selected = mysqli_select_db($conn, $dbname);
+
+$user = $_GET['firstname'];
+
+//$user_id = $_POST['firstname'];
+
+//echo ("First name: " . $user. "<br />\n");
+
+$query = "SELECT * FROM studentList WHERE studentID = '$user'";//. mysqli_real_escape_string($conn,$user_id);
+    
+    $result2 = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result2) == 1) 
+    {
+      
+        while($row2 = mysqli_fetch_array($result2)){
+            echo "<tr>";
+                
+                               
+               
+                echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
+                echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
+              
+                echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
+         
+                echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
+         
+             echo "</tr>";
+        
+
+        }
+
+    } 
+    else 
+    {
+	   if  ('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/")
+	    	
+	    	{
+		    	echo "Please Type or Scan your Student I.D. "; //Start
+	    	}
+	    	
+	    if  ('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/index.php")
+	    	
+	    	{
+		    	echo "Please Type or Scan your Student I.D. "; //Start
+	    	}
+
+	    
+	    
+	    else 
+	   {	    
+        echo "Student I.D. not recognised."; //Fail
+        }
+    
+    }
+
+
+mysqli_close($conn);
+
+  ?>
+
+            
+            
+            </div><!-- end of second student details-->
+            
+            </div> <!-- end of time table holder--> 
+            
       <div style="text-align: center;"></div>   
 
          
-  
-       
-
+        
         <!--Stuff for displaying the timetable-->
       
         <div id="timeTableHolder"> 
@@ -275,6 +363,13 @@ mysqli_close($conn);
    
    </div> <!-- class="container"> -->
          
+
+
+         
+     <!--<a class="twitter-timeline" href="https://twitter.com/frustr8dlec">Tweets by frustr8dlec</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+
+
+
 
     <footer>
       <div class="container">
