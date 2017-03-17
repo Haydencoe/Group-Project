@@ -15,7 +15,7 @@
       <div class="container">
         <div class="call-us">Call us on 01522 876000</div>
           <ul class="top-navbar-list">
-           <li><a href="mailto:hayden@haydencoe.co.uk">Contact</a></li>
+           <li><a href="mailto:309219@student.lincolncollege.ac.uk">Contact</a></li>
           
           </ul>
       </div>
@@ -40,14 +40,14 @@
                
              
              <div id="studentDetails" >   
-                 <p> Student Details:</p>
+                 <p id="pDetails"> Student Details:</p>
                 
                          
                 <!--<p id="">Student Name: </p>-->
                 <!--<ul id="decodeders"> </ul>-->
 
                 <!--<p id="">Student Number: </p>-->
-                <ul id="decoded"></ul>
+                <!--<ul id="decoded"></ul>-->
                
                <?php
 $servername = "db668576206.db.1and1.com";
@@ -74,38 +74,36 @@ $query = "SELECT * FROM studentList WHERE studentID = '$user'";//. mysqli_real_e
     {
       
         while($row2 = mysqli_fetch_array($result2)){
+            
+            echo "<img src='Pictures/".$row2['firstname'].".png' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px '/>";    
+            
             echo "<tr>";
                 
-                               
+                              
                
                 echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
                 echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
+              
               
                 echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
          
                 echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
          
-             echo "</tr>";
-        
-
-        }
+                echo "</tr>";
+         
+               
+        }  
 
     } 
     else 
     {
-	   if  ('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/")
 	    	
-	    	{
+	   if (((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"=="https://sds.computerscience.online/") || (((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"=="https://sds.computerscience.online/index.php"))) 
+	        {
 		    	echo "Please Type or Scan your Student I.D. "; //Start
 	    	}
 	    	
-	    if  ('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/index.php")
-	    	
-	    	{
-		    	echo "Please Type or Scan your Student I.D. "; //Start
-	    	}
-
-	    
+	        
 	    
 	    else 
 	   {	    
@@ -128,11 +126,7 @@ mysqli_close($conn);
                <div id="inner"></div>
                <div id="redline"></div>
                
-               <!--
-               <button style="height:50px; width: 395px;" class="button" id="cam" onclick="myFunction()">Start Camera</button>
-              -->
-               
-              
+                             
                <div id="panel">
 	              
 	               <form id="myForm" method="get" >
@@ -142,23 +136,9 @@ mysqli_close($conn);
                
                              
 	               </form>         
-                              <!--<button style="height:50px; width: 200px;" class="button" onclick="">Enter</button>-->
+                              
                </div>
-
-               
-               <!--
-               <div >
-               
-                  <button style="height:50px; width: 187.5px;" class="button" id="scan" >Scan</button>
-                   
-                  <button style="height:50px; width: 187.5px;" class="button" id="type" >Type</button>
-            
-               </div>
-      
-              -->
-      
-      
-      
+                     
               <div class="center">
   
   
@@ -168,7 +148,7 @@ mysqli_close($conn);
     <div id='btn3' onclick="stopCamFunction()">
       <div class='share-icon'>
         <i class="ion-share"> </i>
-       <img src="cross-flat.png" style="width:50px;height:50px;" alt="Stop"> 
+       <img src="Pictures/redCross.png" style="width:50px;height:50px;" alt="Stop"> 
       </div>
       <div class='share-label'>
         <span>Stop</span>
@@ -181,7 +161,7 @@ mysqli_close($conn);
     <div class='btn4' onclick="myFunction()"  >
       <div class='share-icon'>
         <i class="ion-share"> </i>
-       <img src="green%20tick.png" style="width:50px;height:50px;" alt="Start"> 
+       <img src="Pictures/greenTick.png" style="width:50px;height:50px;" alt="Start"> 
       </div>
       <div class='share-label'>
         <span>Start</span>
@@ -195,7 +175,7 @@ mysqli_close($conn);
     <div class='btn' id='scanBtn' >
       <div class='share-icon'>
         <i class="ion-share"> </i>
-       <img src="UPC-1977.png" style="width:50px;height:50px;" alt="Scan"> 
+       <img src="Pictures/barCode.png" style="width:50px;height:50px;" alt="Scan"> 
       </div>
       <div class='share-label'>
         <span>Scan</span>
@@ -208,7 +188,7 @@ mysqli_close($conn);
     <div id='btn2'>
       <div class='share-icon'>
         <i class="ion-share"> </i>
-       <img src="keyboard-icon.png" style="width:50px;height:50px;" alt="Type"> 
+       <img src="Pictures/keyBoard.png" style="width:50px;height:50px;" alt="Type"> 
       </div>
       <div class='share-label'>
         <span>Type</span>
@@ -250,7 +230,7 @@ mysqli_close($conn);
                 <!--<ul id="decodeders"> </ul>-->
 
                 <!--<p id="">Student Number: </p>-->
-                <ul id="decoded"></ul>
+                
                
                <?php
 $servername = "db668576206.db.1and1.com";
@@ -277,6 +257,9 @@ $query = "SELECT * FROM studentList WHERE studentID = '$user'";//. mysqli_real_e
     {
       
         while($row2 = mysqli_fetch_array($result2)){
+           
+           echo "<img src='Pictures/".$row2['firstname'].".png' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px '/>"; 
+           
             echo "<tr>";
                 
                                
@@ -284,6 +267,7 @@ $query = "SELECT * FROM studentList WHERE studentID = '$user'";//. mysqli_real_e
                 echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
                 echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
               
+                              
                 echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
          
                 echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
@@ -296,13 +280,13 @@ $query = "SELECT * FROM studentList WHERE studentID = '$user'";//. mysqli_real_e
     } 
     else 
     {
-	   if  ('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/")
+	   if  (('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/") && ('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/index.php"))
 	    	
 	    	{
 		    	echo "Please Type or Scan your Student I.D. "; //Start
 	    	}
 	    	
-	    if  ('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/index.php")
+	    if  (('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/") && ('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/index.php"))
 	    	
 	    	{
 		    	echo "Please Type or Scan your Student I.D. "; //Start
@@ -312,8 +296,10 @@ $query = "SELECT * FROM studentList WHERE studentID = '$user'";//. mysqli_real_e
 	    
 	    else 
 	   {	    
+       
         echo "Student I.D. not recognised."; //Fail
-        }
+       
+       }
     
     }
 
@@ -346,14 +332,14 @@ mysqli_close($conn);
            
                <div id="HND2Timetable" class="hidden">
     
-                 <img src="HND2Timetable.JPG" height="420" width="840" alt="HND Timetable">
+                 <img src="Pictures/HND2Timetable.JPG" height="420" width="840" alt="HND Timetable">
    
                </div>
 
      
                <div id="HNC2Timetable" class="hidden">
     
-                 <img src="HNC2Timetable.JPG" height="420" width="840" alt="HNC Timetable">
+                 <img src="Pictures/HNC2Timetable.JPG" height="420" width="840" alt="HNC Timetable">
    
                </div>
   
@@ -365,10 +351,15 @@ mysqli_close($conn);
          
 
 
-         
-     <!--<a class="twitter-timeline" href="https://twitter.com/frustr8dlec">Tweets by frustr8dlec</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+         <div id="twitterHolder">
+     
+           <div id="twitter">
+            
+            <a class="twitter-timeline" href="https://twitter.com/frustr8dlec">Tweets by frustr8dlec</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
-
+           </div>
+           
+         </div>
 
 
     <footer>
