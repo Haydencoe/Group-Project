@@ -4,6 +4,7 @@
  
  
  
+ 
  //Button Animation Stuff
  
  $(document).ready(function() {  
@@ -18,7 +19,7 @@
             
             //HAYDEN COE
             
-            if (window.location.href=="http://sds.computerscience.online/?firstname=309219")  
+            if ((window.location.href=="https://sds.computerscience.online/?firstname=309219") || (window.location.href=="https://sds.computerscience.online/index.php?firstname=309219"))  
             {
 	        
 	     //Part to unhide the right timetable HNC2Timetable
@@ -42,7 +43,7 @@
        
             //KIERAN BROWN
            
-           if (window.location.href=="http://sds.computerscience.online/?firstname=271592")  
+           if (window.location.href=="https://sds.computerscience.online/?firstname=271592")  
             {
 	        
 	     //Part to unhide the right timetable HNC2Timetable
@@ -67,7 +68,7 @@
 
            //SAM PRICE
            
-           if (window.location.href=="http://sds.computerscience.online/?firstname=308401")  
+           if (window.location.href=="https://sds.computerscience.online/?firstname=308401")  
             {
 	        
 	     //Part to unhide the right timetable HNC2Timetable
@@ -93,7 +94,7 @@
           
            //STEPHEN TREVOR
            
-           if (window.location.href=="http://sds.computerscience.online/?firstname=312825")  
+           if (window.location.href=="https://sds.computerscience.online/?firstname=312825")  
             {
 	        
 	     //Part to unhide the right timetable HNC2Timetable
@@ -118,7 +119,7 @@
 
            //PATRICK SCOTT
            
-           if (window.location.href=="http://sds.computerscience.online/?firstname=273051")  
+           if (window.location.href=="https://sds.computerscience.online/?firstname=273051")  
             {
 	        
 	     //Part to unhide the right timetable HNC2Timetable
@@ -208,10 +209,7 @@
                  'marginLeft' : "-=110px" //moves left
                 });
              
-               
-               //$(".btn-container3").delay(500).hide( "fast" ); 
-               //$(".btn-container4").delay(500).hide("fast" );
-				
+               				
          
          
          
@@ -349,30 +347,10 @@ $(window).scroll(function() {
 
 $(document).ready(function() {
  
- /*
-  // Fade through slideshow on main page
-  $("#slideshow > div:gt(0)").hide();
-  setInterval(function() {
-    $('#slideshow > div:first')
-      .fadeOut(2000)
-      .next()
-      .fadeIn(2000)
-      .end()
-      .appendTo('#slideshow');
-  }, 4000);
-*/
-
-
+ 
 });
 
 
-
-
-
-       
-       
- 
-  
   
   function getUserMedia(options, successCallback, failureCallback) {
   var api = navigator.getUserMedia || navigator.webkitGetUserMedia ||
@@ -402,13 +380,7 @@ function getStream(type) {
   });
 }
   
-        
-        
-                
-
-
-
-
+ 
 //TRIAL STUFF***************************************************************************************************
 
 
@@ -434,7 +406,7 @@ function myFunction() {  //button click "Start"
        
         var localStream;
 
-        var sound = new Audio("barcode.wav");
+        var sound = new Audio("Sounds/barcode.wav");
 
         var video = document.querySelector('video');
         var canvas = document.querySelector('canvas');
@@ -454,10 +426,7 @@ function myFunction() {  //button click "Start"
             if (event.data.length == 0) return;
             var d = event.data[0];
             
-           // var entry = document.createElement('li');
-            //entry.appendChild(document.createTextNode(d[2] + ' (' + d[0] + ')'));
-            //list.appendChild(entry);
-            
+                      
             sound.play(); //Plays 'beep' noise
         
              // Submit form with name function.
@@ -552,3 +521,9 @@ function myFunction() {  //button click "Start"
          
          
          }
+         
+         
+         
+         
+         
+         
