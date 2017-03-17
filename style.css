@@ -21,31 +21,19 @@ body {
   #secondStudentDetails { display: block; }  /* show it on small screens */
 }
 
-
-
 @media screen and (min-width: 0px) and (max-width: 1000px) {
   #studentDetailsHolder { display: block; }  /* show it on small screens */
 
   #studentDetails { display: none; }  /* show it on small screens */
-
-
 }
-
-
-
 
 @media screen and (min-width: 1000px) and (max-width: 5000px) {
   #secondStudentDetails { display: none; }   /* hide it elsewhere */
 
-
 }
-
-
 
 @media screen and (min-width: 1000px) and (max-width: 5000px) {
   #secondStudentDetails { display: none; }   /* hide it elsewhere */
-
-
 
 }
 
@@ -86,7 +74,7 @@ body {
     margin-bottom: 50px;
     
     width: 100%;
-    height: 220px;
+    height: 300px;
     
     }
 
@@ -103,9 +91,12 @@ body {
     padding: 20px;
     
     /*width: 100%;840px;*/
-    height: 220px;
+    height: 300px;
     
     }
+
+
+
 
 
 
@@ -124,6 +115,44 @@ body {
     height: 420px;
     
     }
+
+
+
+#twitter > div {
+    /*text-align: center;*/
+   
+    border-radius: 5px;
+    border-collapse: collapse;
+    border: 4px solid gray;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left:  auto;
+    margin-bottom: 50px;
+    
+    width: 840px;
+    height: auto;
+    
+    }
+
+#twitterHolder > div {
+    /*text-align: center;*/
+   
+    border-radius: 5px;
+    border-collapse: collapse;
+    border: 1px solid gray;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left:  auto;
+    margin-bottom: 0px;
+    padding: 20px;
+    
+    width:840px;
+    height: auto;
+    
+    }
+
+
+
 
 
 h6 {
@@ -150,6 +179,17 @@ p {
   font-size: 18px;
   line-height: 1.6;
 }
+
+
+#pDetails {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-top: 0px; 
+
+}
+
+
+
 
 /* Overall container to set maximum width */
 .container {
@@ -965,7 +1005,7 @@ div#btn2 {
   background-color: #647074;
   position: relative;
   margin: 10px auto;
-  margin-right: 20px;
+  margin-right: 200px;
   border-radius: 50px;
   width: 50px;
   height: 50px;
