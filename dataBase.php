@@ -4,6 +4,7 @@ $username = "dbo668576206";
 $password = "hayden301";
 $dbname = "db668576206";
 
+
 // Create connection
 $conn = mysqli_connect($servername, $username, $password);
 // Check connection
@@ -26,18 +27,21 @@ else {
 }
 
 
+
 /*
 // sql to create table
-$sql = "CREATE TABLE students (
+$sql = "CREATE TABLE studentListPassword (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 firstname VARCHAR(30) NOT NULL,
 lastname VARCHAR(30) NOT NULL,
 studentID VARCHAR(50),
+password VARCHAR(50),
+course VARCHAR(30) NOT NULL,
 reg_date TIMESTAMP
 )";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Table students created successfully";
+    echo "Table studentListPassword created successfully";
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }
@@ -46,16 +50,16 @@ if (mysqli_query($conn, $sql)) {
 /*
 //sql to insert data into table
 
-$sql2 = "INSERT INTO students (firstname, lastname, studentID)
-VALUES ('Hayden', 'Coe', '309219');";
-$sql2 .= "INSERT INTO students (firstname, lastname, studentID)
-VALUES ('Kieran', 'Brown', '271592');";
-$sql2 .= "INSERT INTO students (firstname, lastname, studentID)
-VALUES ('Sam', 'Price', '308401');";
-$sql2 .= "INSERT INTO students (firstname, lastname, studentID)
-VALUES ('Steven', 'Trevor', '312825');";
-$sql2 .= "INSERT INTO students (firstname, lastname, studentID)
-VALUES ('Patrick', 'Scott', '273051')";
+$sql2 = "INSERT INTO studentListPassword (firstname, lastname, studentID, password, course)
+VALUES ('Hayden', 'Coe', '309219', 'password1', 'HNC');";
+$sql2 .= "INSERT INTO studentListPassword (firstname, lastname, studentID, password, course)
+VALUES ('Kieran', 'Brown', '271592', 'password2', 'HND');";
+$sql2 .= "INSERT INTO studentListPassword (firstname, lastname, studentID, password, course)
+VALUES ('Sam', 'Price', '308401', 'password3', 'HND');";
+$sql2 .= "INSERT INTO studentListPassword (firstname, lastname, studentID, password, course)
+VALUES ('Steven', 'Trevor', '312825', 'password4', 'HND');";
+$sql2 .= "INSERT INTO studentListPassword (firstname, lastname, studentID, password, course)
+VALUES ('Patrick', 'Scott', '273051', 'password5', 'HND')";
 
 if (mysqli_multi_query($conn, $sql2)) {
     echo "New records created successfully";
@@ -76,15 +80,15 @@ if (mysqli_query($conn, $sql4)) {
 
 
 
-*/
+//*/
 
-//mysqli_query($conn,'TRUNCATE TABLE students'); //WARNING deletes everything in the table but resets table contents order.
+//mysqli_query($conn,'TRUNCATE TABLE studentListPassword'); //WARNING this deletes everything in the table but resets table contents order.
 
 //Sql to check data
 
 
 
-$sql3 = "SELECT id, firstname, lastname, studentID FROM students ";
+$sql3 = "SELECT id, firstname, lastname, studentID, password, course FROM studentListPassword ";
 $result = mysqli_query($conn, $sql3);
 
 
@@ -94,7 +98,7 @@ if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) 
     
     {
-        echo "Row ID: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. ", Student I.D. : " . $row["studentID"]."<br>";
+        echo "Row ID: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. ", Student I.D. : " . $row["studentID"]. ", Password: " . $row["password"]. ", Course: " . $row["course"]."<br>";
     
     
      
@@ -118,7 +122,7 @@ $user = $_GET['firstname'];
 
 
 
-$query = "SELECT * FROM students WHERE studentID = '$user'";//. mysqli_real_escape_string($conn,$user_id);
+$query = "SELECT * FROM studentList WHERE studentID = '$user'";//. mysqli_real_escape_string($conn,$user_id);
     
     $result2 = mysqli_query($conn, $query);
     if (mysqli_num_rows($result2) == 1) 
@@ -135,6 +139,8 @@ $query = "SELECT * FROM students WHERE studentID = '$user'";//. mysqli_real_esca
                 echo "<td>" . "<br> Search Result: <br> Name: " . $row2['firstname'] . "</td>";
                 echo "<td>" ." " . $row2['lastname'] . "</td>";
                 echo "<td>" . " Student ID: " . $row2['studentID'] . "</td>";
+                echo "<td>" . " Course: " . $row2['course'] . "</td>";
+            
             echo "</tr>";
         
         
