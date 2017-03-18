@@ -1,149 +1,13 @@
 
          
- 
- 
- 
- 
- 
- //Button Animation Stuff
+//Button Animation Stuff
  
  $(document).ready(function() {  
            
             
             document.getElementById('scanBtn').style.pointerEvents = 'none'; //STOP the press of scan while already on scan
 
-            
-                     
-            
-            //STUFF TO SHOW RIGHT TIMETABLE
-            
-            //HAYDEN COE
-            
-            if ((window.location.href=="https://sds.computerscience.online/?firstname=309219") || (window.location.href=="https://sds.computerscience.online/index.php?firstname=309219"))  
-            {
-	        
-	     //Part to unhide the right timetable HNC2Timetable
-                var item = document.getElementById('HNC2Timetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-                //Hides the empty time table holder
-                var item = document.getElementById('emptyTimetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-            
-            
-            }//end of if statement 
-        
-       
-            //KIERAN BROWN
-           
-           if (window.location.href=="https://sds.computerscience.online/?firstname=271592")  
-            {
-	        
-	     //Part to unhide the right timetable HNC2Timetable
-                var item = document.getElementById('HND2Timetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-                //Hides the empty time table holder
-                var item = document.getElementById('emptyTimetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-            
-            
-            }//end of if statement 
-
-
-
-           //SAM PRICE
-           
-           if (window.location.href=="https://sds.computerscience.online/?firstname=308401")  
-            {
-	        
-	     //Part to unhide the right timetable HNC2Timetable
-                var item = document.getElementById('HND2Timetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-                //Hides the empty time table holder
-                var item = document.getElementById('emptyTimetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-            
-            
-            }//end of if statement 
-
-
-
-          
-           //STEPHEN TREVOR
-           
-           if (window.location.href=="https://sds.computerscience.online/?firstname=312825")  
-            {
-	        
-	     //Part to unhide the right timetable HNC2Timetable
-                var item = document.getElementById('HND2Timetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-                //Hides the empty time table holder
-                var item = document.getElementById('emptyTimetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-            
-            
-            }//end of if statement 
-
-
-
-           //PATRICK SCOTT
-           
-           if (window.location.href=="https://sds.computerscience.online/?firstname=273051")  
-            {
-	        
-	     //Part to unhide the right timetable HNC2Timetable
-                var item = document.getElementById('HND2Timetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-                //Hides the empty time table holder
-                var item = document.getElementById('emptyTimetable');
-                if (item) 
-                {
-                  item.className=(item.className=='hidden')?'unhidden':'hidden';
-                }
-            
-            
-            
-            }//end of if statement 
-
-
-           
-            
-            
+                       
     $("#btn2").click(function(){//type button
         
      
@@ -437,15 +301,39 @@ function myFunction() {  //button click "Start"
               
               document.getElementById('fname').value = res;    
               
+              if(res == "309219")//hayden
+              {
+                 document.getElementById('pword').value = "password1";   
+              }  
+              
+              if(res == "271592")//Kieran
+              {
+                 document.getElementById('pword').value = "password2";   
+              }  
+              
+              if(res == "308401")//Sam
+              {
+                 document.getElementById('pword').value = "password3";   
+              }  
+              
+              if(res == "312825")
+              {
+                 document.getElementById('pword').value = "password4";   
+              }  
+              
+              if(res == "273051")
+              {
+                 document.getElementById('pword').value = "password5";   
+              }  
+              
+              
               document.getElementById('myForm').submit();
               
               
 
             localStream.getTracks().forEach(function(track) { track.stop() }) //Stops the camera stream
             
-       
-                       
-           
+                   
            
            
            }; //End of "Worker" 
@@ -515,9 +403,21 @@ function myFunction() {  //button click "Start"
           
           if (x == "") 
           {
-          alert("Name must be filled out");
+          alert("Student I.D. must be filled out");
           return false;
           }
+         
+         
+         var y = document.forms["myForm"]["pword"].value;
+          
+          if (y == "") 
+          {
+          alert("Password must be entered");
+          return false;
+          }
+
+
+           
          
          
          }
