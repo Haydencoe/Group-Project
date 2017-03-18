@@ -41,14 +41,7 @@
              
              <div id="studentDetails" >   
                  <p id="pDetails"> Student Details:</p>
-                
-                         
-                <!--<p id="">Student Name: </p>-->
-                <!--<ul id="decodeders"> </ul>-->
-
-                <!--<p id="">Student Number: </p>-->
-                <!--<ul id="decoded"></ul>-->
-               
+                              
                <?php
 $servername = "db668576206.db.1and1.com";
 $username = "dbo668576206";
@@ -61,21 +54,30 @@ $conn = mysqli_connect($servername, $username, $password);
 
 $db_selected = mysqli_select_db($conn, $dbname);
 
-$user = $_GET['firstname'];
+//$user = $_GET['firstname'];
 
-//$user_id = $_POST['firstname'];
+$user_id = $_POST["firstname"];
 
-//echo ("First name: " . $user. "<br />\n");
+$user_password = $_POST["password"];
 
-$query = "SELECT * FROM studentList WHERE studentID = '$user'";//. mysqli_real_escape_string($conn,$user_id);
+//WHERE username = '".mysql_real_escape_string($_POST['username'])."'AND password = '$password'");
+
+
+$query = "SELECT * FROM studentListPassword WHERE studentID = '$user_id' AND password = '$user_password'";//. mysqli_real_escape_string($conn,$user_id);
+    
+//$query2 = "SELECT * FROM studentListPassword WHERE studentID = '$user_id'";//. mysqli_real_escape_string($conn,$user_id);    
     
     $result2 = mysqli_query($conn, $query);
+   // $result3 = mysqli_query($conn, $query2);
+    
+   
+
     if (mysqli_num_rows($result2) == 1) 
     {
       
         while($row2 = mysqli_fetch_array($result2)){
             
-            echo "<img src='Pictures/".$row2['firstname'].".png' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px '/>";    
+            echo "<img src='Pictures/".$row2['firstname'].".png' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px; border-radius: 10px; '/>";    
             
             echo "<tr>";
                 
@@ -89,28 +91,39 @@ $query = "SELECT * FROM studentList WHERE studentID = '$user'";//. mysqli_real_e
          
                 echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
          
+                   
                 echo "</tr>";
          
                
+              
+             
+               
         }  
 
-    } 
+      } 
     else 
     {
 	    	
-	   if (((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"=="https://sds.computerscience.online/") || (((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"=="https://sds.computerscience.online/index.php"))) 
-	        {
-		    	echo "Please Type or Scan your Student I.D. "; //Start
-	    	}
+		 if ($user_id == "")
+	       
+	     {
+		    echo "Please Type or Scan your Student I.D. "; //Start
+	     }
 	    	
 	        
 	    
 	    else 
 	   {	    
-        echo "Student I.D. not recognised."; //Fail
-        }
+        
+        echo "Student I.D. or Password not recognised."; //Fail
+        
+       }
     
     }
+
+
+    
+
 
 
 mysqli_close($conn);
@@ -129,14 +142,18 @@ mysqli_close($conn);
                              
                <div id="panel">
 	              
-	               <form id="myForm" method="get" >
+	                              
+                  <form action = "<?php $_PHP_SELF ?>" method = "POST" id = "myForm" onsubmit = "return validateForm(this)">
+                     
                       <label for="fname">Enter Student I.D.</label>
                       <input type="text" id="fname" name="firstname">
+                      <label for="pword">Enter Your Password.</label>
+                      <input type="password" id="pword" name="password" >
                       <input type="submit" value="Submit">
                
-                             
-	               </form>         
-                              
+                 </form>   
+                 
+                                                            
                </div>
                      
               <div class="center">
@@ -244,69 +261,85 @@ $conn = mysqli_connect($servername, $username, $password);
 
 $db_selected = mysqli_select_db($conn, $dbname);
 
-$user = $_GET['firstname'];
+//$user = $_GET['firstname'];
 
-//$user_id = $_POST['firstname'];
+$user_id = $_POST["firstname"];
 
-//echo ("First name: " . $user. "<br />\n");
+$user_password = $_POST["password"];
 
-$query = "SELECT * FROM studentList WHERE studentID = '$user'";//. mysqli_real_escape_string($conn,$user_id);
+//WHERE username = '".mysql_real_escape_string($_POST['username'])."'AND password = '$password'");
+
+
+$query = "SELECT * FROM studentListPassword WHERE studentID = '$user_id' AND password = '$user_password'";//. mysqli_real_escape_string($conn,$user_id);
+    
+//$query2 = "SELECT * FROM studentListPassword WHERE studentID = '$user_id'";//. mysqli_real_escape_string($conn,$user_id);    
     
     $result2 = mysqli_query($conn, $query);
+   // $result3 = mysqli_query($conn, $query2);
+    
+   
+
     if (mysqli_num_rows($result2) == 1) 
     {
       
         while($row2 = mysqli_fetch_array($result2)){
-           
-           echo "<img src='Pictures/".$row2['firstname'].".png' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px '/>"; 
-           
+            
+            echo "<img src='Pictures/".$row2['firstname'].".png' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px; border-radius: 10px; '/>";    
+            
             echo "<tr>";
                 
-                               
+                              
                
                 echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
                 echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
               
-                              
+              
                 echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
          
                 echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
          
-             echo "</tr>";
-        
+                   
+                echo "</tr>";
+         
+               
+              
+             
+               
+        }  
 
-        }
-
-    } 
+      } 
     else 
     {
-	   if  (('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/") && ('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/index.php"))
 	    	
-	    	{
-		    	echo "Please Type or Scan your Student I.D. "; //Start
-	    	}
+		 if ($user_id == "")
+	       
+	     {
+		    echo "Please Type or Scan your Student I.D. "; //Start
+	     }
 	    	
-	    if  (('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/") && ('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "http://sds.computerscience.online/index.php"))
-	    	
-	    	{
-		    	echo "Please Type or Scan your Student I.D. "; //Start
-	    	}
-
-	    
+	        
 	    
 	    else 
 	   {	    
-       
-        echo "Student I.D. not recognised."; //Fail
-       
+        
+        echo "Student I.D. or Password not recognised."; //Fail
+        
        }
     
     }
 
 
+    
+
+
+
 mysqli_close($conn);
 
   ?>
+
+
+     
+
 
             
             
@@ -316,6 +349,8 @@ mysqli_close($conn);
             
       <div style="text-align: center;"></div>   
 
+         
+         
          
         
         <!--Stuff for displaying the timetable-->
@@ -327,6 +362,8 @@ mysqli_close($conn);
 	           <div id="emptyTimetable" class="unhidden">
     
                  <h6> Time table will appear here.</h6> 
+   
+                  
    
                </div>
            
@@ -368,6 +405,99 @@ mysqli_close($conn);
         <!-- <div>&copy; Copyright 2017 Hayden Coe</div> -->
       </div>
     </footer>
+
+
+    <script type="text/javascript">
+                   var MyJSStringVar = "<?php Print($user_id); ?>"; //Part to show time table based on users student ID
+      
+                   var MyJSStringVarTwo = "<?php Print($user_password); ?>";
+      
+                       
+           if ((MyJSStringVar=='309219')&&(MyJSStringVarTwo=='password1'))  
+            {
+	               	               	               
+	                //Part to unhide the right timetable HNC2Timetable
+                var item = document.getElementById('HNC2Timetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+                //Hides the empty time table holder
+                var item = document.getElementById('emptyTimetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+
+	        
+            
+            
+            }//end of if statement 
+      
+      
+            if ((MyJSStringVar=='271592')&&(MyJSStringVarTwo=='password2')||(MyJSStringVar=='308401')&&(MyJSStringVarTwo=='password3')||(MyJSStringVar=='312825')&&(MyJSStringVarTwo=='password4')||(MyJSStringVar=='273051')&&(MyJSStringVarTwo=='password5'))  //Checks usernames and passwords match up to display correct timetable
+            {
+	         
+	                
+	               	               
+	                //Part to unhide the right timetable HND2Timetable
+                var item = document.getElementById('HND2Timetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+            
+                //Hides the empty time table holder
+                var item = document.getElementById('emptyTimetable');
+                if (item) 
+                {
+                  item.className=(item.className=='hidden')?'unhidden':'hidden';
+                }
+
+	                            
+          
+            
+            
+            }//end of if statement 
+
+      
+      
+      
+          function validateForm(x) {
+          var x = document.forms["myForm"]["fname"].value;
+          
+          if (x == "") 
+          {
+          alert("Student I.D. Must Be Filled Out!");
+          return false;
+          }
+         
+         
+         var y = document.forms["myForm"]["pword"].value;
+          
+          if (y == "") 
+          {
+          alert("A Password Must Be Entered!");
+          return false;
+          }
+
+         
+         else
+         {
+	         document.getElementById('myForm').submit();
+	     }
+         
+         
+         
+         }
+
+      
+      
+            
+         </script>
+
+
 
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
