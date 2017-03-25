@@ -29,6 +29,9 @@
         <li class="active"><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="helpPage.html">Help Page</a></li>
+      
+      <li><a href='logout.php'>Log Out</a></li>
+      
       </ul>
 
 
@@ -56,6 +59,8 @@ $db_selected = mysqli_select_db($conn, $dbname);
 
 //$user = $_GET['firstname'];
 
+
+
 $user_id = $_POST["firstname"];
 
 $user_password = $_POST["password"];
@@ -65,14 +70,24 @@ $user_password = $_POST["password"];
 
 $query = "SELECT * FROM studentListPassword WHERE studentID = '$user_id' AND password = '$user_password'";//. mysqli_real_escape_string($conn,$user_id);
     
-//$query2 = "SELECT * FROM studentListPassword WHERE studentID = '$user_id'";//. mysqli_real_escape_string($conn,$user_id);    
+$query2 = "SELECT * FROM studentListPassword WHERE studentID = '$user_id'";//. mysqli_real_escape_string($conn,$user_id);    
     
-    $result2 = mysqli_query($conn, $query);
-   // $result3 = mysqli_query($conn, $query2);
+  
+    $result2 = mysqli_query($conn, $query);  //user id and password for type 
+    $result3 = mysqli_query($conn, $query2); //just user id for scan
     
+   if ($user_id == "")  //entered on start page
+	       
+	     {
+		    echo "Please Type or Scan your Student I.D. "; //Start
+	     }
+	    	
    
-
-    if (mysqli_num_rows($result2) == 1) 
+   else
+   {
+   
+	  
+   if (mysqli_num_rows($result2) == 1) //user id and password type
     {
       
         while($row2 = mysqli_fetch_array($result2)){
@@ -98,30 +113,64 @@ $query = "SELECT * FROM studentListPassword WHERE studentID = '$user_id' AND pas
               
              
                
-        }  
+        }  //end of while 
 
-      } 
-    else 
-    {
+      } // end of user id and password type
+   
 	    	
-		 if ($user_id == "")
-	       
-	     {
-		    echo "Please Type or Scan your Student I.D. "; //Start
-	     }
-	    	
+		 
 	        
 	    
 	    else 
 	   {	    
         
-        echo "Student I.D. or Password not recognised."; //Fail
+        echo "Student I.D. or Password not recognised."; //Fail on password and id 
         
        }
     
+    
+    if ($user_password=="")//if doing scan 
+ 
+     {
+ 
+      if (mysqli_num_rows($result3) == 1) //just user name
+    {
+      
+        while($row2 = mysqli_fetch_array($result2)){
+            
+            echo "<img src='Pictures/".$row2['firstname'].".png' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px; border-radius: 10px; '/>";    
+            
+            echo "<tr>";
+                
+                              
+               
+                echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
+                echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
+              
+              
+                echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
+         
+                echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
+         
+                   
+                echo "</tr>";
+   
+               
+        }//end of while  
+
+
+      }//end of if for just user name scan 
+      
+    	    
+	    else 
+	   {	    
+        
+        echo "Student I.D. or Password not recognised."; //Fail scan 
+        
+       }
     }
-
-
+    
+}//end of else from start page
     
 
 
@@ -143,7 +192,7 @@ mysqli_close($conn);
                <div id="panel">
 	              
 	                              
-                  <form action = "<?php $_PHP_SELF ?>" method = "POST" id = "myForm" onsubmit = "return validateForm(this)">
+                  <form action = "/index.php<?php $_PHP_SELF ?>" method = "POST" id = "myForm" onsubmit = "return validateForm(this)">
                      
                       <label for="fname">Enter Student I.D.</label>
                       <input type="text" id="fname" name="firstname">
@@ -175,7 +224,7 @@ mysqli_close($conn);
 
   
   <div class="btn-container4">
-    <div class='btn4' onclick="myFunction()"  >
+    <div class='btn4'id='startBtn' onclick="myFunction()"  >
       <div class='share-icon'>
         <i class="ion-share"> </i>
        <img src="Pictures/greenTick.png" style="width:50px;height:50px;" alt="Start"> 
@@ -263,6 +312,8 @@ $db_selected = mysqli_select_db($conn, $dbname);
 
 //$user = $_GET['firstname'];
 
+
+
 $user_id = $_POST["firstname"];
 
 $user_password = $_POST["password"];
@@ -272,14 +323,24 @@ $user_password = $_POST["password"];
 
 $query = "SELECT * FROM studentListPassword WHERE studentID = '$user_id' AND password = '$user_password'";//. mysqli_real_escape_string($conn,$user_id);
     
-//$query2 = "SELECT * FROM studentListPassword WHERE studentID = '$user_id'";//. mysqli_real_escape_string($conn,$user_id);    
+$query2 = "SELECT * FROM studentListPassword WHERE studentID = '$user_id'";//. mysqli_real_escape_string($conn,$user_id);    
     
-    $result2 = mysqli_query($conn, $query);
-   // $result3 = mysqli_query($conn, $query2);
+  
+    $result2 = mysqli_query($conn, $query);  //user id and password for type 
+    $result3 = mysqli_query($conn, $query2); //just user id for scan
     
+   if ($user_id == "")  //entered on start page
+	       
+	     {
+		    echo "Please Type or Scan your Student I.D. "; //Start
+	     }
+	    	
    
-
-    if (mysqli_num_rows($result2) == 1) 
+   else
+   {
+   
+	  
+   if (mysqli_num_rows($result2) == 1) //user id and password type
     {
       
         while($row2 = mysqli_fetch_array($result2)){
@@ -305,30 +366,64 @@ $query = "SELECT * FROM studentListPassword WHERE studentID = '$user_id' AND pas
               
              
                
-        }  
+        }  //end of while 
 
-      } 
-    else 
-    {
+      } // end of user id and password type
+   
 	    	
-		 if ($user_id == "")
-	       
-	     {
-		    echo "Please Type or Scan your Student I.D. "; //Start
-	     }
-	    	
+		 
 	        
 	    
 	    else 
 	   {	    
         
-        echo "Student I.D. or Password not recognised."; //Fail
+        echo "Student I.D. or Password not recognised."; //Fail on password and id 
         
        }
     
+    
+    if ($user_password=="")//if doing scan 
+ 
+     {
+ 
+      if (mysqli_num_rows($result3) == 1) //just user name
+    {
+      
+        while($row2 = mysqli_fetch_array($result2)){
+            
+            echo "<img src='Pictures/".$row2['firstname'].".png' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px; border-radius: 10px; '/>";    
+            
+            echo "<tr>";
+                
+                              
+               
+                echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
+                echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
+              
+              
+                echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
+         
+                echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
+         
+                   
+                echo "</tr>";
+   
+               
+        }//end of while  
+
+
+      }//end of if for just user name scan 
+      
+    	    
+	    else 
+	   {	    
+        
+        echo "Student I.D. or Password not recognised."; //Fail scan 
+        
+       }
     }
-
-
+    
+}//end of else from start page
     
 
 
@@ -361,23 +456,25 @@ mysqli_close($conn);
 	         
 	           <div id="emptyTimetable" class="unhidden">
     
-                 <h6> Time table will appear here.</h6> 
+                   <h6> Time table will appear here.</h6> 
    
                   
    
                </div>
            
                <div id="HND2Timetable" class="hidden">
-    
-                 <img src="Pictures/HND2Timetable.JPG" height="420" width="840" alt="HND Timetable">
-   
+                   <a class="thumbnail">
+                 <img src="Pictures/HND2Timetable.JPG" alt="HND Timetable">
+                   </a>
                </div>
 
      
                <div id="HNC2Timetable" class="hidden">
     
-                 <img src="Pictures/HNC2Timetable.JPG" height="420" width="840" alt="HNC Timetable">
-   
+    
+                 <a class="thumbnail">
+                 <img src="Pictures/HNC2Timetable.JPG"  alt="HNC Timetable">
+                 </a>
                </div>
   
             </div> <!-- End of appearHere -->
@@ -515,4 +612,3 @@ mysqli_close($conn);
 
   
 </html>
-
