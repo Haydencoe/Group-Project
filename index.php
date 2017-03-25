@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Student Database System</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
   
   
   </head>
@@ -30,7 +30,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="helpPage.html">Help Page</a></li>
       
-      <li><a href='logout.php'>Log Out</a></li>
+      <li><a href='php/logout.php'>Log Out</a></li>
       
       </ul>
 
@@ -205,58 +205,59 @@ mysqli_close($conn);
                                                             
                </div>
                      
-              <div class="center">
+   
+   <div id="center">
   
   
   
-  
-  <div id="btn-container3">
-    <div id='btn3' onclick="stopCamFunction()">
+   <!-- button for stoping the webcam function--> 
+  <div id="stopBtn-container">
+    <div id='stopBtn' onclick="stopCamFunction()">
       <div class='share-icon'>
         <i class="ion-share"> </i>
        <img src="Pictures/redCross.png" style="width:50px;height:50px;" alt="Stop"> 
       </div>
-      <div class='share-label'>
+      <div class='btn-label'>
         <span>Stop</span>
       </div>
     </div>
   </div>
 
-  
-  <div class="btn-container4">
-    <div class='btn4'id='startBtn' onclick="myFunction()"  >
+   <!-- button for starting the webcam function--> 
+  <div id="startBtn-container">
+    <div id='startBtn' onclick="myFunction()"  >
       <div class='share-icon'>
         <i class="ion-share"> </i>
        <img src="Pictures/greenTick.png" style="width:50px;height:50px;" alt="Start"> 
       </div>
-      <div class='share-label'>
+      <div class='btn-label'>
         <span>Start</span>
       </div>
     </div>
   </div>
 
   
-  
-<div class="btn-container">
-    <div class='btn' id='scanBtn' >
-      <div class='share-icon'>
-        <i class="ion-share"> </i>
-       <img src="Pictures/barCode.png" style="width:50px;height:50px;" alt="Scan"> 
-      </div>
-      <div class='share-label'>
+  <!-- button for scanning function--> 
+<div id="scanBtn-container">
+    <div id='scanBtn'>
+       <div class='share-icon'>
+         <i class="ion-share"> </i>
+         <img src="Pictures/barCode.png" style="width:50px;height:50px;" alt="Scan"> 
+       </div>
+       <div class='btn-label'>
         <span>Scan</span>
-      </div>
+       </div>
     </div>
-  </div>
+ </div>
 
-
-   <div id="btn-container2">
-    <div id='btn2'>
+    <!-- button for typing function-->
+   <div id="typeBtn-container">
+    <div id='typeBtn'>
       <div class='share-icon'>
         <i class="ion-share"> </i>
        <img src="Pictures/keyBoard.png" style="width:50px;height:50px;" alt="Type"> 
       </div>
-      <div class='share-label'>
+      <div class='btn-label'>
         <span>Type</span>
       </div>
     </div>
@@ -266,7 +267,7 @@ mysqli_close($conn);
    
 
 
-</div>
+</div><!--end of center div-->
   
       
       
@@ -600,7 +601,7 @@ mysqli_close($conn);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="common.js"></script>
+    <script src="javaScript/common.js"></script>
     
  
  
@@ -612,3 +613,4 @@ mysqli_close($conn);
 
   
 </html>
+
