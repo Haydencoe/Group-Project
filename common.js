@@ -1,7 +1,8 @@
- function delay() {
+ 
+             function delay() {
               
               document.getElementById('startBtn').style.pointerEvents = 'auto';   
-              document.getElementById('btn3').style.pointerEvents = 'auto';   
+              document.getElementById('stopBtn').style.pointerEvents = 'auto';   
 
               }
 
@@ -18,7 +19,7 @@
             document.getElementById('scanBtn').style.pointerEvents = 'none'; //STOP the press of scan while already on scan
 
                        
-    $("#btn2").click(function(){//type button
+    $("#typeBtn").click(function(){//type button
         
      
         $("#inner").slideUp(500);
@@ -34,7 +35,7 @@
              });
 
 
-     $(".btn").click(function(){//scan button
+     $("#scanBtn").click(function(){//scan button
         
         $("#panel").slideUp(500);
         $("#inner").delay(500).slideDown(500);
@@ -50,7 +51,7 @@
             
             
             //Type button
-            $("#btn2").click(function () {
+            $("#typeBtn").click(function () {
                
              
                           
@@ -59,28 +60,28 @@
              
              //$(this).addClass("active");
              
-            //$("#btn2").addClass('.active');
+            //$("#typeBtn").addClass('.active');
               
              
              
              //Hide all 4 
             
 
-             $('#btn3').animate({
+             $('#stopBtn').animate({
                  'marginLeft' : "-=0px" //moves left
                 });
              
-             $('.btn4').animate({
+             $('#startBtn').animate({
                  'marginLeft' : "-=108px" //moves left
                 });
              
-              $('.btn').animate({
+              $('#scanBtn').animate({
                  'marginLeft' : "-=110px" //moves left
                 });
              
              
              
-             $('#btn2').animate({
+             $('#typeBtn').animate({
                  'marginLeft' : "-=110px" //moves left
                 });
              
@@ -89,23 +90,23 @@
          
          
           //Show the 2
-          $('.btn').delay(300).animate({
+          $('#scanBtn').delay(300).animate({
                  'marginLeft' : "+=0px" //moves right
                 });
 
              
-             $('#btn2').delay(300).animate({
+             $('#typeBtn').delay(300).animate({
                  'marginLeft' : "+=110px" //moves right
                 });
          
-               document.getElementById('btn3').style.pointerEvents = 'none'; //Stop the press of start while on type
+               document.getElementById('stopBtn').style.pointerEvents = 'none'; //Stop the press of start while on type
                document.getElementById('startBtn').style.pointerEvents = 'none'; //Stop the press of start while on type
-               document.getElementById('btn2').style.pointerEvents = 'none'; //STOP the press of type btn while already on type
+               document.getElementById('typeBtn').style.pointerEvents = 'none'; //STOP the press of type btn while already on type
                document.getElementById('scanBtn').style.pointerEvents = 'auto'; //ENABLE the press of scan while on type
 
                
                 $( "#scanBtn" ).removeClass( "selected" );
-                $( "#btn2" ).addClass( "selected" );
+                $( "#typeBtn" ).addClass( "selected" );
                
                         
            });
@@ -116,23 +117,23 @@
          
          
             //Scan button
-            $(".btn").click(function () {
+            $("#scanBtn").click(function () {
                
-                //$(".btn-container3").delay(0).show( "fast" );
+                //$("#scanBtn-container3").delay(0).show( "fast" );
                
-               //$(".btn-container4").delay(0).show("fast" );
+               //$("#scanBtn-container4").delay(0).show("fast" );
 
                
                
                
             //Hide the 2
                           
-             $('.btn').animate({
+             $('#scanBtn').animate({
                  'marginLeft' : "-=0px" //moves left
                 });
 
              
-             $('#btn2').animate({
+             $('#typeBtn').animate({
                  'marginLeft' : "-=110px" //moves left
                 });
              
@@ -142,30 +143,30 @@
           //Show all 4
          
             /* 
-             $('.btn3').animate({
+             $('.stopBtn').animate({
                  'marginLeft' : "+=0px" //moves right
                 });
              */
              
-             $('#btn2').delay(500).animate({
+             $('#typeBtn').delay(500).animate({
                  'marginLeft' : "+=110px" //moves right
                 });
                     
              
 
-             $('.btn').delay(700).animate({
+             $('#scanBtn').delay(700).animate({
                  'marginLeft' : "+=110px" //moves right
                 });
 
                          
-             $('.btn4').delay(900).animate({
+             $('#startBtn').delay(900).animate({
                  'marginLeft' : "+=110px" //moves right
              
                 });
          
               
               
-               document.getElementById('btn2').style.pointerEvents = 'auto'; //ENABLE the press of type while on scan
+               document.getElementById('typeBtn').style.pointerEvents = 'auto'; //ENABLE the press of type while on scan
                document.getElementById('scanBtn').style.pointerEvents = 'none'; //STOP the press of scan while already on scan
                 
                setTimeout(delay, 1000);
@@ -174,7 +175,7 @@
          
          
          
-               $( "#btn2" ).removeClass( "selected" );
+               $( "#typeBtn" ).removeClass( "selected" );
                 $( "#scanBtn" ).addClass( "selected" );
 
          
@@ -189,9 +190,8 @@
 
 
 //JQueary for switching from type/scan
-  
-$(document).ready(function(){
-    $("#btn").click(function(){
+  $(document).ready(function(){
+    $("#typeBtn").click(function(){
         
         //$("#cam").fadeOut(1000);
         $("#cam").hide("slow");
@@ -207,7 +207,7 @@ $(document).ready(function(){
     });
 
 
-     $(".btn2").click(function(){
+     $("#scanBtn").click(function(){
         $("#panel").slideUp(1000);
         $("#inner").delay(1000).slideDown(1000);
         $("#redline").delay(1000).slideDown(1000);
@@ -279,7 +279,7 @@ function stopCamFunction() {  //button click "Stop"
 location.reload();
 
 
-document.getElementById('btn2').style.pointerEvents = 'auto'; //ENABLE the press of type when web cam is deactivated
+document.getElementById('typeBtn').style.pointerEvents = 'auto'; //ENABLE the press of type when web cam is deactivated
 
 	
 }  //end stop function
@@ -310,7 +310,7 @@ function myFunction() {  //button click "Start"
         
         //When a barcode has been scanned 
         
-        var worker = new Worker('zbar-processor.js');
+        var worker = new Worker('javaScript/zbar-processor.js');
         worker.onmessage = function(event) {
             if (event.data.length == 0) return;
             var d = event.data[0];
@@ -327,34 +327,7 @@ function myFunction() {  //button click "Start"
               document.getElementById('fname').value = res;    
               
               
-              /*
-              if(res == "309219")//hayden
-              {
-                 document.getElementById('pword').value = "password1";   
-              }  
-              
-              if(res == "271592")//Kieran
-              {
-                 document.getElementById('pword').value = "password2";   
-              }  
-              
-              if(res == "308401")//Sam
-              {
-                 document.getElementById('pword').value = "password3";   
-              }  
-              
-              if(res == "312825")
-              {
-                 document.getElementById('pword').value = "password4";   
-              }  
-              
-              if(res == "273051")
-              {
-                 document.getElementById('pword').value = "password5";   
-              }  
-              */
-              
-              document.getElementById('myForm').submit();
+             document.getElementById('myForm').submit();
               
               
 
@@ -419,7 +392,7 @@ function myFunction() {  //button click "Start"
         }
         
         
-         document.getElementById('btn2').style.pointerEvents = 'none'; //STOP the press of type while web cam is active
+         document.getElementById('typeBtn').style.pointerEvents = 'none'; //STOP the press of type while web cam is active
 
         } //end of myFunction
         
@@ -450,7 +423,7 @@ function myFunction() {  //button click "Start"
          }
          
          
-
+         
          
          
          
