@@ -1,10 +1,20 @@
+ function delay() {
+              
+              document.getElementById('startBtn').style.pointerEvents = 'auto';   
+              document.getElementById('btn3').style.pointerEvents = 'auto';   
 
-         
-//Button Animation Stuff
+              }
+
+
+
+    
+ //Button Animation Stuff
  
  $(document).ready(function() {  
            
-            
+            $( "#scanBtn" ).addClass( "selected" );
+            //document.getElementById('scanBtn').className = 'btnSelected';
+                       
             document.getElementById('scanBtn').style.pointerEvents = 'none'; //STOP the press of scan while already on scan
 
                        
@@ -46,7 +56,8 @@
                           
              
              //$(".selected").removeClass("selected");
-             $(this).addClass("active");
+             
+             //$(this).addClass("active");
              
             //$("#btn2").addClass('.active');
               
@@ -79,19 +90,24 @@
          
           //Show the 2
           $('.btn').delay(300).animate({
-                 'marginLeft' : "+=0px" //moves left
+                 'marginLeft' : "+=0px" //moves right
                 });
 
              
              $('#btn2').delay(300).animate({
-                 'marginLeft' : "+=110px" //moves left
+                 'marginLeft' : "+=110px" //moves right
                 });
          
-         
+               document.getElementById('btn3').style.pointerEvents = 'none'; //Stop the press of start while on type
+               document.getElementById('startBtn').style.pointerEvents = 'none'; //Stop the press of start while on type
                document.getElementById('btn2').style.pointerEvents = 'none'; //STOP the press of type btn while already on type
                document.getElementById('scanBtn').style.pointerEvents = 'auto'; //ENABLE the press of scan while on type
 
-         
+               
+                $( "#scanBtn" ).removeClass( "selected" );
+                $( "#btn2" ).addClass( "selected" );
+               
+                        
            });
          
          
@@ -147,11 +163,20 @@
              
                 });
          
-         
+              
+              
                document.getElementById('btn2').style.pointerEvents = 'auto'; //ENABLE the press of type while on scan
                document.getElementById('scanBtn').style.pointerEvents = 'none'; //STOP the press of scan while already on scan
-
+                
+               setTimeout(delay, 1000);
+           
+            
          
+         
+         
+               $( "#btn2" ).removeClass( "selected" );
+                $( "#scanBtn" ).addClass( "selected" );
+
          
            });
          
@@ -301,6 +326,8 @@ function myFunction() {  //button click "Start"
               
               document.getElementById('fname').value = res;    
               
+              
+              /*
               if(res == "309219")//hayden
               {
                  document.getElementById('pword').value = "password1";   
@@ -325,7 +352,7 @@ function myFunction() {  //button click "Start"
               {
                  document.getElementById('pword').value = "password5";   
               }  
-              
+              */
               
               document.getElementById('myForm').submit();
               
@@ -423,7 +450,7 @@ function myFunction() {  //button click "Start"
          }
          
          
-         
+
          
          
          
