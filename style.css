@@ -59,7 +59,8 @@ figure figcaption {
     margin-bottom: 50px;
     
 }
-}
+    
+}/*end of media query */
 
 @media screen and (min-width: 700px) and (max-width: 1000px) {
       #appearHere > div {
@@ -69,7 +70,26 @@ figure figcaption {
     
 }
 
-}
+}/*end of media query */
+
+
+
+@media screen and (min-width: 600px) and (max-width: 5000px) {
+     h6 {
+           padding: 150px;
+        }
+
+}/*end of media query */
+
+@media screen and (min-width: 0px) and (max-width: 600px) {
+     h6 {
+              padding: 50px;
+        }
+
+}/*end of media query */
+
+
+
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
       #appearHere > div {
@@ -77,17 +97,17 @@ figure figcaption {
     margin-left:  50px;
     margin-bottom: 50px;
     
-}
-
-
-
+    
 
 }
+
+}/*end of media query */
 
 @media screen and (min-width: 1000px) and (max-width: 5000px) {
   #secondStudentDetails { display: none; }   /* hide it elsewhere */
  
  
+  
  #appearHere > div {
     margin-right: 150px;
     margin-left:  150px;
@@ -304,7 +324,7 @@ h6 {
     margin: 20px 0 20px 0;
     font-size: 40px;
     text-align: center;
-    padding: 150px;
+    /*padding: 150px;*/
     opacity: 0.2;
 }
 
@@ -716,78 +736,6 @@ ul {
     width: 1500px;
     overflow: hidden;
 }
-.product-image {
-    z-index: 10;
-    width: 80%;
-    max-width: 170px;
-    height: auto;
-    margin: 10px 0;
-    border: 1px solid lightgray;
-    border-collapse: collapse;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    -moz-transition: -moz-transform 0.5s ease-in;
-    -webkit-transition: -webkit-transform 0.5s ease-in;
-    -o-transition: -o-transform 0.5s ease-in;
-}
-.product-image:hover {
-    -moz-transform: scale(2);
-    -webkit-transform: scale(2);
-    -o-transform: scale(2);
-    transform: scale(2);
-}
-
-/* Shopping cart */
-.cart-container {
-  font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
-  max-width: 900px;
-  margin: 50px auto;
-  border: 1px solid #ddd;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  padding: 10px 20px;
-  height: auto;
-}
-
-.cart-container h2 {
-  text-align: center;
-  font-size: 24px;
-  margin: 0 0 20px;
-  line-height: 30px;
-}
-
-.cart-container .cart-icon {
-  width: 25px;
-  height: 25px;
-}
-
-.cart-container span {
-  display: inline;
-}
-
-.cart-container ul {
-  width: auto;
-}
-
-.cart-container ul li {
-  border-top: 1px solid #ccc;
-  padding: 20px 30px;
-}
-
-.cart-container .item-price {
-  float: right;
-}
-
-.cart-container .total-container {
-  padding: 20px 30px;
-  text-align: right;
-  border-top: 2px solid #000;
-  border-bottom: 2px solid #000;
-}
-
-.cart-container .remove {
-  padding-right: 10px;
-  float: right;
-}
 
 
 
@@ -1037,6 +985,10 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
+
+
+
+
 button#scan {
 	
 	position: absolute;
@@ -1065,19 +1017,32 @@ button#cam {
 
 }
 
-/* Button Stuff ................................................................  */
+/* Button Styles ................................................................  */
 	
-/*	
-	@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300);
-body {
-  /*font-family: "Roboto";
-  background-color: white;
-  margin: 0;
-  padding: 0;
+.selected { /* shows what button has been selected scan/type with a lovely yellow colour*/
+  box-shadow: 0 0 0 4px yellow;
 }
-*/
 
-.center {
+.btn-label {
+  margin-left: 33px;
+  top: 10px;
+  opacity: 0;
+  position: relative;
+}
+
+.btn-label span {
+  color: white;
+  font-size: 30px;
+}
+
+.share-icon {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+}
+
+
+div#center {
   /*width: 100vw;
   height: 100vh;
   display: table;
@@ -1089,24 +1054,11 @@ body {
   margin-left: 20px;
 }
 
-.active {
-	
-	-webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
-    -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
-     box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
-
-	/*pointer-events:none;*/
-	
-	}
 
 
-.btn-container {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
+/*.................................................*/ /*SCAN BUTTON*/	
 
-.btn {
+div#scanBtn {
 
   background-color: #009ED8;
   position: relative;
@@ -1124,21 +1076,13 @@ body {
   
 }
 
-.selected {
 
-  
-  box-shadow: 0 0 0 2px yellow;
-
-}
-
-
-
-.btn:hover {
+div#scanBtn:hover {
   width: 146px;
   box-shadow: 0px 0px 0px 3px white;
 }
 
-.btn:hover .share-label {
+div#scanBtn:hover .btn-label {
   top: 3px;
   opacity: 1;
   transition-property: top, opacity;
@@ -1146,33 +1090,24 @@ body {
   transition-delay: .3s;
 }
 
-.share-label {
-  margin-left: 33px;
-  top: 10px;
-  opacity: 0;
-  position: relative;
-}
 
-.share-label span {
-  color: white;
-  font-size: 30px;
-}
-
-.share-icon {
-  position: absolute;
-  top: 16px;
-  left: 18px;
-}
-
-.btn i {
+div#scanBtn i {
   font-size: 34px;
 }	
 
-/*.................................................*/	
+
+div#scanBtn-container {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+
+}
+
+
+
+/*.................................................*//*TYPE BUTTON*/	
 	
-	
-	
-div#btn2 {
+div#typeBtn {
   
   background-color: #647074;
   position: relative;
@@ -1191,33 +1126,15 @@ div#btn2 {
   border-color: red;
   border-width: 5px;
   
-  
-  
-    
-    /*
-    -webkit-box-shadow: 0px 0px 30px 10px rgba(255, 255, 190, .75);
-    -moz-box-shadow: 0px 0px 30px 10px rgba(255, 255, 190, .75);
-     box-shadow: 0px 0px 30px 10px rgba(255, 255, 190, .75);
-  
-   pointer-events:none;
-   */
-}
+  }
 	
 	
-div#btn-container2 {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
- 
-
-}
-	
-div#btn2:hover {
+div#typeBtn:hover {
   width: 146px;
   box-shadow: 0px 0px 0px 3px white;
 }
 
-div#btn2:hover .share-label {
+div#typeBtn:hover .btn-label {
   top: 3px;
   opacity: 1;
   transition-property: top, opacity;
@@ -1225,13 +1142,22 @@ div#btn2:hover .share-label {
   transition-delay: .3s;
 }
 	
-div#btn2 i {
+div#typeBtn i {
   font-size: 34px;
 }	
 
-/*.................................................*/
 
-div#btn3 {
+div#typeBtn-container {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+
+}
+
+/*.................................................*/ /*STOP BUTTON*/
+
+
+div#stopBtn {
   
   background-color: #F84545;
   position: relative;
@@ -1249,22 +1175,13 @@ div#btn3 {
   
    
 }
-	
-	
-div#btn-container3 {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
- 
 
-}
-	
-	div#btn3:hover {
+div#stopBtn:hover {
   width: 146px;
   box-shadow: 0px 0px 0px 3px white;
 }
 
-div#btn3:hover .share-label {
+div#stopBtn:hover .btn-label {
   top: 3px;
   opacity: 1;
   transition-property: top, opacity;
@@ -1272,15 +1189,25 @@ div#btn3:hover .share-label {
   transition-delay: .3s;
 }
 	
-	div#btn3 i {
+	div#stopBtn i {
   font-size: 34px;
 }		
 	
-/*....................................................*/	
+div#stopBtn-container {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+
+}	
 	
-	.btn4 {
+	
+/*....................................................*/ /*START BUTTON*/	
+	
+div#startBtn {   /*Start button*/
   
   background-color: #00B050;
+  /*background-color: rgb(3,167,71);*/
+  
   position: relative;
   margin: 10px auto;
   margin-right: 20px;
@@ -1294,24 +1221,14 @@ div#btn3:hover .share-label {
   transition-property: width;
   transition-duration: .2s;
   
-   
 }
 	
-	
-.btn-container4 {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
- 
-
-}
-	
-	.btn4:hover {
+div#startBtn:hover {
   width: 146px;
   box-shadow: 0px 0px 0px 3px white;
 }
 
-.btn4:hover .share-label {
+div#startBtn:hover .btn-label {
   top: 3px;
   opacity: 1;
   transition-property: top, opacity;
@@ -1319,6 +1236,13 @@ div#btn3:hover .share-label {
   transition-delay: .3s;
 }
 	
-	.btn4 i {
+div#startBtn i {
   font-size: 34px;
 }		
+
+div#startBtn-container {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+
+}
