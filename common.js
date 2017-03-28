@@ -148,9 +148,9 @@ function startCamFunction() { //button click "Start"
 		// Submit form with name function.
 		var str = event.data[0];
 		var res = str.slice(-1);
-		document.getElementById('fname').value = res;
-		document.getElementById('pword').value = "";
-		document.getElementById('myForm').submit();
+		document.getElementById('sNumber').value = res;
+		document.getElementById('pWord').value = "";
+		document.getElementById('typeForm').submit();
 		localStream.getTracks().forEach(function(track) {
 				track.stop()
 			}) //Stops the camera stream
@@ -187,12 +187,12 @@ function startCamFunction() { //button click "Start"
 } //end of startCamFunction
 //form validation code to ensure all fields are filled out 
 function validateForm() {
-	var x = document.forms["myForm"]["fname"].value;
+	var x = document.forms["typeForm"]["sNumber"].value;
 	if (x == "") {
 		alert("Student I.D. must be filled out");
 		return false;
 	}
-	var y = document.forms["myForm"]["pword"].value;
+	var y = document.forms["typeForm"]["pWord"].value;
 	if (y == "") {
 		alert("Password must be entered");
 		return false;
