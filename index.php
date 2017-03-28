@@ -43,7 +43,7 @@
                       // Check connection
                       $db_selected = mysqli_select_db($conn, $dbname);
 
-                      $user_id = $_POST["firstname"];
+                      $user_id = $_POST["studentNumber"];
                       $user_password = $_POST["password"];
 
                       $query = "SELECT * FROM studentListPassword WHERE studentID = '$user_id' AND password = '$user_password'";//. mysqli_real_escape_string($conn,$user_id);
@@ -116,12 +116,12 @@
                     <div id="panel">
 	              
 	                              
-                      <form action = "/index.php<?php $_PHP_SELF ?>" method = "POST" id = "myForm" onsubmit = "return validateForm(this)">
+                      <form action = "/index.php<?php $_PHP_SELF ?>" method = "POST" id = "typeForm" onsubmit = "return validateForm(this)">
                      
-                      <label for="fname">Enter Student I.D.</label>
-                      <input type="text" id="fname" name="firstname">
-                      <label for="pword">Enter Your Password.</label>
-                      <input type="password" id="pword" name="password" >
+                      <label for="sNumber">Enter Student I.D.</label>
+                      <input type="text" id="sNumber" name="studentNumber">
+                      <label for="pWord">Enter Your Password.</label>
+                      <input type="password" id="pWord" name="password" >
                       <input type="submit" value="Submit">
                       </form>   
                     </div> <!--end of panel div--> 
@@ -203,7 +203,7 @@
                       // Check connection
                       $db_selected = mysqli_select_db($conn, $dbname);
 
-                      $user_id = $_POST["firstname"];
+                      $user_id = $_POST["studentNumber"];
                       $user_password = $_POST["password"];
 
                       $query = "SELECT * FROM studentListPassword WHERE studentID = '$user_id' AND password = '$user_password'";//. mysqli_real_escape_string($conn,$user_id);
