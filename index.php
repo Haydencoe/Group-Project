@@ -52,58 +52,58 @@
                       $result2 = mysqli_query($conn, $query);  //user id and password for type 
                       $result3 = mysqli_query($conn, $query2); //just user id for scan
     
-                       if ($user_id == "")  //entered on start page
+                      if ($user_id == "")  //entered on start page
 	                   {
 		                 echo "Please Type or Scan your Student I.D. "; //Start
 	                   }
-                       else//other than start page
+                      else//other than start page
                        {
      
-                          if (mysqli_num_rows($result2) == 1) //user id and password type
+                          if (strlen($user_password) > 0)//if doing type
                            {
-      
-                             while($row2 = mysqli_fetch_array($result2)){
+                     
+                               if (mysqli_num_rows($result2) == 1) //user id and password type
+                               {
+                                   while($row2 = mysqli_fetch_array($result2)){
             
-                                 echo "<img src='Pictures/".$row2['firstname'].".JPG' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px; border-radius: 10px; '/>";    
-                                 echo "<tr>";
-                                 echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
-                                 echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
-                                 echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
-                                 echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
-                                 echo "</tr>";
-                                 $stored_password = $row2['password'];
-                                }  //end of while 
-                            } // end of user id and password type
+                                   echo "<img src='Pictures/".$row2['firstname'].".JPG' alt='profilePic' height='60' width='60' border='2' style=' border-radius: 10px; '/>";    
+                                   echo "<tr>";
+                                   echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
+                                   echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
+                                   echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
+                                   echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
+                                   echo "</tr>";
+                                   $stored_password = $row2['password'];
+                                   }  //end of while 
+                                } // end of user id and password type
    
-	                        else 
-	                        {	    
-                                echo "Student I.D. or Password not recognised."; //Fail on password and id 
+	                            else 
+	                            {	    
+                                   echo "Student I.D. or Password not recognised."; //Fail on password and id 
+                                }
                             }
-    
-    
                             if ($user_password=="")//if doing scan 
                             {
  
-                               if (mysqli_num_rows($result3) == 1) //just user name
+                                if (mysqli_num_rows($result3) == 1) //just user name
                                 {
-      
-                                  while($row2 = mysqli_fetch_array($result2)){
-            
-                                     echo "<img src='Pictures/".$row2['firstname'].".JPG' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px; border-radius: 10px; '/>";    
-                                     echo "<tr>";
-                                     echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
-                                     echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
-                                     echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
-                                     echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
-                                     echo "</tr>";
-                                     $stored_password = $row2['password'];
+                                    while($row2 = mysqli_fetch_array($result3)){
+                                             
+                                      echo "<img src='Pictures/".$row2['firstname'].".JPG' alt='profilePic' height='60' width='60' border='2' style='; border-radius: 10px; '/>";    
+                                      echo "<tr>";
+                                      echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
+                                      echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
+                                      echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
+                                      echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
+                                      echo "</tr>";
+                                      $stored_password = "";
                                     }//end of while  
                                 }//end of if for just user name scan 
                                 else 
 	                            {	    
                                     echo "Student I.D. or Password not recognised."; //Fail scan 
                                 }    
-                            }// end of user id type
+                            }// end of if for scanning
                         }//end of else from start page
                         mysqli_close($conn); //closing of database connection
                         ?>
@@ -191,83 +191,83 @@
                 <div id="secondStudentDetails"> 
 	      
 	               <p> Student Details:</p> 
-                
-                   <!--PHP to retrieve the student details form the dataBase--> 
-                   <?php
-                   $servername = "db668576206.db.1and1.com";
-                   $username = "dbo668576206";
-                   $password = "hayden301";
-                   $dbname = "db668576206";
+                      <!--PHP to retrieve the student details form the dataBase--> 
+                      <?php
+                      $servername = "db668576206.db.1and1.com";
+                      $username = "dbo668576206";
+                      $password = "hayden301";
+                      $dbname = "db668576206";
 
-                   // Create connection
-                   $conn = mysqli_connect($servername, $username, $password);
-                   // Check connection
-                   $db_selected = mysqli_select_db($conn, $dbname);
+                      // Create connection
+                      $conn = mysqli_connect($servername, $username, $password);
+                      // Check connection
+                      $db_selected = mysqli_select_db($conn, $dbname);
 
-                  $user_id = $_POST["firstname"];
-                  $user_password = $_POST["password"];
+                      $user_id = $_POST["firstname"];
+                      $user_password = $_POST["password"];
 
-                  $query = "SELECT * FROM studentListPassword WHERE studentID = '$user_id' AND password = '$user_password'";//. mysqli_real_escape_string($conn,$user_id);
-                  $query2 = "SELECT * FROM studentListPassword WHERE studentID = '$user_id'";
+                      $query = "SELECT * FROM studentListPassword WHERE studentID = '$user_id' AND password = '$user_password'";//. mysqli_real_escape_string($conn,$user_id);
+                      $query2 = "SELECT * FROM studentListPassword WHERE studentID = '$user_id'";
     
-                  $result2 = mysqli_query($conn, $query);  //user id and password for type 
-                  $result3 = mysqli_query($conn, $query2); //just user id for scan
+                      $result2 = mysqli_query($conn, $query);  //user id and password for type 
+                      $result3 = mysqli_query($conn, $query2); //just user id for scan
     
-                  if ($user_id == "")  //entered on start page
-	              {
-		             echo "Please Type or Scan your Student I.D. "; //Start
-	              }
-                  else//other than start page
-                   {
-     
-                     if (mysqli_num_rows($result2) == 1) //user id and password type
+                      if ($user_id == "")  //entered on start page
+	                   {
+		                 echo "Please Type or Scan your Student I.D. "; //Start
+	                   }
+                      else//other than start page
                        {
-      
-                          while($row2 = mysqli_fetch_array($result2)){
-            
-                             echo "<img src='Pictures/".$row2['firstname'].".JPG' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px; border-radius: 10px; '/>";    
-                             echo "<tr>";
-                             echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
-                             echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
-                             echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
-                             echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
-                             echo "</tr>";
-                             $stored_password = $row2['password'];
-                            }  //end of while 
-                        } // end of user id and password type
-   
-	                    else 
-	                    {	    
-                           echo "Student I.D. or Password not recognised."; //Fail on password and id 
-                        }
-    
-    
-                        if ($user_password=="")//if doing scan 
-                        {
- 
-                           if (mysqli_num_rows($result3) == 1) //just user name
+     
+                          if (strlen($user_password) > 0)//if doing type
                            {
-      
-                              while($row2 = mysqli_fetch_array($result2)){
+                     
+                               if (mysqli_num_rows($result2) == 1) //user id and password type
+                               {
+                                   while($row2 = mysqli_fetch_array($result2)){
             
-                                 echo "<img src='Pictures/".$row2['firstname'].".JPG' alt='profilePic' height='60' width='60' border='2' style='float:none; margin:0px 0px; border-radius: 10px; '/>";    
-                                 echo "<tr>";
-                                 echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
-                                 echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
-                                 echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
-                                 echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
-                                 echo "</tr>";
-                                 $stored_password = $row2['password'];
-                                }//end of while  
-                            }//end of if for just user name scan 
-                            else 
-	                        {	    
-                               echo "Student I.D. or Password not recognised."; //Fail scan 
-                            }    
-                        }// end of user id type
-                    }//end of else from start page
-                   mysqli_close($conn); //closing of database connection
-                   ?>
+                                   echo "<img src='Pictures/".$row2['firstname'].".JPG' alt='profilePic' height='60' width='60' border='2' style=' border-radius: 10px; '/>";    
+                                   echo "<tr>";
+                                   echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
+                                   echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
+                                   echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
+                                   echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
+                                   echo "</tr>";
+                                   $stored_password = $row2['password'];
+                                   }  //end of while 
+                                } // end of user id and password type
+   
+	                            else 
+	                            {	    
+                                   echo "Student I.D. or Password not recognised."; //Fail on password and id 
+                                }
+                            }
+                            if ($user_password=="")//if doing scan 
+                            {
+ 
+                                if (mysqli_num_rows($result3) == 1) //just user name
+                                {
+                                    while($row2 = mysqli_fetch_array($result3)){
+                                             
+                                      echo "<img src='Pictures/".$row2['firstname'].".JPG' alt='profilePic' height='60' width='60' border='2' style='; border-radius: 10px; '/>";    
+                                      echo "<tr>";
+                                      echo "<td>" . "<br> Name: " . $row2['firstname'] . "</td>";
+                                      echo "<td>" ." " . $row2['lastname'] . "<br>". "</td>"; 
+                                      echo "<td>" . "<br> Student ID: " . $row2['studentID'] . "<br>" . "</td>";
+                                      echo "<td>" . "<br> Course: " . $row2['course'] . "</td>";
+                                      echo "</tr>";
+                                      $stored_password = "";
+
+                                    }//end of while  
+                                }//end of if for just user name scan 
+                                else 
+	                            {	    
+                                    echo "Student I.D. or Password not recognised."; //Fail scan 
+                                }    
+                            }// end of if for scanning
+                        }//end of else from start page
+                        mysqli_close($conn); //closing of database connection
+                        ?>
                 </div><!-- end of second student details-->
             </div> <!-- end of student details holder--> 
             <div style="text-align: center;"></div>   
@@ -303,7 +303,7 @@
          
         <footer>
             <div class="container">
-                <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fsds.computerscience.online%2F" class="valid-link"></a>    
+                <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fsds.computerscience.online%2F" class="valid-link">Valid HTML</a>    
                 <div>&copy; Copyright 2017 Hayden Coe</div> 
             </div>
         </footer>
@@ -315,7 +315,8 @@
             var MyJSStringVar = "<?php Print($user_id); ?>"; //Part to show time table based on users student ID
             var MyJSStringVarTwo = "<?php Print($user_password); ?>"; //the entered password
             var MyJSStringVarThree = "<?php Print($stored_password); ?>"; //the stored password
-                   
+                
+                              
             if ((MyJSStringVar=='309219')&&(MyJSStringVarTwo==MyJSStringVarThree))//checks the student id and checks the entered password against the stored password
             {
 	            //Part to unhide the right timetable HNC2Timetable
@@ -332,6 +333,10 @@
                   item.className=(item.className=='hidden')?'unhidden':'hidden';
                 }
             }//end of if statement 
+      
+      
+            
+      
       
             //Checks usernames and passwords match up to display correct timetable
             if ((MyJSStringVar=='271592')&&(MyJSStringVarTwo==MyJSStringVarThree)||(MyJSStringVar=='308401')&&(MyJSStringVarTwo==MyJSStringVarThree)||(MyJSStringVar=='312825')&&(MyJSStringVarTwo==MyJSStringVarThree)||(MyJSStringVar=='273051')&&(MyJSStringVarTwo==MyJSStringVarThree))  
@@ -357,3 +362,8 @@
         <script src="javaScript/common.js"></script>
     </body>
 </html>
+ 
+ 
+ 
+ 
+
