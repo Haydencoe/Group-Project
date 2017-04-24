@@ -33,10 +33,7 @@
                               
                       <!--PHP to retrieve the student details form the dataBase--> 
                       <?php
-                      $servername = "db668576206.db.1and1.com";
-                      $username = "dbo668576206";
-                      $password = "hayden301";
-                      $dbname = "db668576206";
+                     
 
                       // Create connection
                       $conn = mysqli_connect($servername, $username, $password);
@@ -193,10 +190,7 @@
 	               <p> Student Details:</p> 
                       <!--PHP to retrieve the student details form the dataBase--> 
                       <?php
-                      $servername = "db668576206.db.1and1.com";
-                      $username = "dbo668576206";
-                      $password = "hayden301";
-                      $dbname = "db668576206";
+                     
 
                       // Create connection
                       $conn = mysqli_connect($servername, $username, $password);
