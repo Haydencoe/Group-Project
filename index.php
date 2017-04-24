@@ -34,6 +34,7 @@
                       <!--PHP to retrieve the student details form the dataBase--> 
                       <?php
                      
+			    //Removed login details to protect data
 
                       // Create connection
                       $conn = mysqli_connect($servername, $username, $password);
@@ -191,6 +192,7 @@
                       <!--PHP to retrieve the student details form the dataBase--> 
                       <?php
                      
+	              //Removed login details to protect data
 
                       // Create connection
                       $conn = mysqli_connect($servername, $username, $password);
