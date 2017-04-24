@@ -1,8 +1,5 @@
 <?php
-$servername = "db668576206.db.1and1.com";
-$username = "dbo668576206";
-$password = "hayden301";
-$dbname = "db668576206";
+
 
 
 // Create connection
