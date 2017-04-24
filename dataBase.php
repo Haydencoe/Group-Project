@@ -1,6 +1,6 @@
 <?php
 
-
+//Removed login details to protect data
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password);
