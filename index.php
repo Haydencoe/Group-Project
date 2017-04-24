@@ -46,10 +46,7 @@
                  <p id="pDetails"> Student Details:</p>
                               
                <?php
-$servername = "db668576206.db.1and1.com";
-$username = "dbo668576206";
-$password = "hayden301";
-$dbname = "db668576206";
+
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password);
@@ -300,10 +297,7 @@ mysqli_close($conn);
                 
                
                <?php
-$servername = "db668576206.db.1and1.com";
-$username = "dbo668576206";
-$password = "hayden301";
-$dbname = "db668576206";
+
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password);
